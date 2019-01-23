@@ -1,9 +1,9 @@
 var autonomousMode = null;
 var switchAttempt = true;
 var scaleAttempt = false;
-var autonomousModeLabel = "SmartDashboard/autonomousMode";
-var switchAttemptLabel = "SmartDashboard/switchAttempt"
-var scaleAttemptLabel = "SmartDashboard/scaleAttempt"
+var autonomousModeLabel = "/SmartDashboard/autonomousMode";
+var switchAttemptLabel = "/SmartDashboard/switchAttempt"
+var scaleAttemptLabel = "/SmartDashboard/scaleAttempt"
 var websocketConnected = false;
 
 $(function() {
