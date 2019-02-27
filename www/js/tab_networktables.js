@@ -4,15 +4,15 @@
             //console.info('onValueChanged', key, value, isNew);
             var table = '#nt > tbody:last';
 
-            var autoKeys = ["autonomousMode", "robotAutoMode", "switchAttempt", "scaleAttempt", "robotSwitchAttempt", "robotScaleAttempt"];
+            var autoKeys = [];
 
-            if (key.startsWith("Elevator/")) {
+            if (key.startsWith("/Elevator/")) {
                 table = '#elevator_vars > tbody:last';
             }
-            if (key.startsWith("Intake/")) {
-                table = '#intake_vars > tbody:last';
+            if (key.startsWith("/Climber/")) {
+                table = '#climber_vars > tbody:last';
             }
-            if(key.startsWith("Drivetrain/")) {
+            if(key.startsWith("/Drivetrain/")) {
                 table = '#drivetrain_vars > tbody:last';
             }
 
@@ -21,24 +21,19 @@
                     table = '#auto_vars > tbody:last';
                 }
             }
+            if($('#' + NetworkTables.keySelector(key)).length == 0) {
+                var tr = $('<tr></tr>').appendTo($(table));
+                $('<td></td>').text(key).appendTo(tr);
+                $('<td></td>').attr('id', NetworkTables.keyToId(key))
+                    .text(value)
+                    .appendTo(tr);
+            }else{
+                $('#' + NetworkTables.keySelector(key)).text(value);
+            }
 
-            var tr = $('<tr></tr>').appendTo($(table));
-            $('<td></td>').text(key).appendTo(tr);
-            $('<td></td>').attr('id', NetworkTables.keyToId(key))
-                .text(value)
-                .appendTo(tr);
 
         } else {
             $('#' + NetworkTables.keySelector(key)).text(value);
-
-            if (key=== "SmartDashboard/angle"){
-                $("#Compass .arrow").css("transform", "rotate(" + value + "deg)");
-                $("#CompassDisplay").text(numeral(value).format("0.00") + " degrees");
-            }
-            if (key === "SmartDashboard/shooter_pitch") {
-                $("#daShooterArm").css("transform", "rotate(" + (-value) + "deg)");
-                $("#daShooterArmDisplay").text(numeral(value).format("0.00") + " degrees");
-            }
 
         }
 
