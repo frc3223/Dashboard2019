@@ -9,8 +9,17 @@
             if (key.startsWith("/Elevator/")) {
                 table = '#elevator_vars > tbody:last';
             }
-            if (key.startsWith("/Climber/")) {
-                table = '#climber_vars > tbody:last';
+            if(key.startsWith("/Climber/RightBack")){
+                table = '#rightback > tbody:last'
+            }
+            if(key.startsWith("Climber/RightFront")){
+                table = '#rightfront > tbody:last'
+            }
+            if(key.startsWith("/Climber/LeftBack")){
+                table = '#leftback > tbody:last'
+            }
+            if(key.startsWith("/Climber/LeftFront")){
+                table = '#leftfront > tbody:front'
             }
             if(key.startsWith("/Drivetrain/")) {
                 table = '#drivetrain_vars > tbody:last';
